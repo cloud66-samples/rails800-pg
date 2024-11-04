@@ -1,2 +1,3 @@
-# rails800
-SAMPLE Rails 8.0.0
+# rails v8.0.0-pre2
+
+Basic sample
