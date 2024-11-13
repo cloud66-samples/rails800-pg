@@ -14,7 +14,6 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
   host: <%= ENV.fetch("DB_HOST") { "127.0.0.1" } %>
 
 development:
@@ -52,8 +51,6 @@ production:
   primary: &primary_production
     <<: *default
     database: rails800_production
-    username: rails800
-    password: <%= ENV["RAILS800_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: rails800_production_cache
