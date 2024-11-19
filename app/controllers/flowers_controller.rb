@@ -7,14 +7,18 @@ class FlowersController < ApplicationController
     end
   end
 
+  def show
+    @flower = Flower.find(params[:id])
+  end
+
   def create
     @flower = Flower.new(
       color: random_color,
-      number_of_petals: rand(10..50)
+      number_of_petals: rand(3..20)
     )
 
     if @flower.save
-      if Flower.count == 20
+      if Flower.count >= 20
         number_to_remove = rand(6..10)
         flowers_to_remove = Flower.order("RAND()").limit(number_to_remove)
         removed_count = flowers_to_remove.destroy_all.length

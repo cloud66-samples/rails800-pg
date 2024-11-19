@@ -27,7 +27,7 @@
     </thead>
     <tbody>
       <% @flowers.each do |flower| %>
-        <tr>
+        <tr class="flower-row" data-href="<%= flower_path(flower) %>">
           <td>#<%= flower.id %></td>
           <td>
             <span class="color-dot" style="background-color: <%= flower.color.downcase %>;"></span>
