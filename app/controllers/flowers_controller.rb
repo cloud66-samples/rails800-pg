@@ -1,6 +1,10 @@
 class FlowersController < ApplicationController
   def index
-    @flowers = Flower.all
+    @cache_status = false  # Default to false
+    @flowers = Rails.cache.fetch("flowers_list", expires_in: 1.minute) do
+      @cache_status = true  # Set to true when we're querying the DB
+      Flower.all.to_a
+    end
   end
 
   def create
@@ -11,12 +15,13 @@ class FlowersController < ApplicationController
 
     if @flower.save
       if Flower.count == 20
-        # Select a random number between 6 and 10 flowers to remove
         number_to_remove = rand(6..10)
         flowers_to_remove = Flower.order("RAND()").limit(number_to_remove)
         removed_count = flowers_to_remove.destroy_all.length
+        Rails.cache.delete("flowers_list")
         flash[:notice] = "Garden got too crowded! #{removed_count} flowers were removed to make space 🌸"
       else
+        Rails.cache.delete("flowers_list")
         flash[:notice] = "New flower sprouted! 🌸"
       end
       redirect_to root_path

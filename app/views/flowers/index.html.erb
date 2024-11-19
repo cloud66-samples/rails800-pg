@@ -1,5 +1,12 @@
 <div class="flowers-page">
-  <h1>My Garden 🌸</h1>
+  <div class="title-container">
+    <h1>
+      My Garden 🌸
+      <span class="cache-indicator <%= @cache_status ? 'live' : 'cached' %>">
+        <%= @cache_status ? 'live 🔴' : 'cached ⚡️' %>
+      </span>
+    </h1>
+  </div>
 
   <% flash.each do |type, message| %>
     <div class="flash flash-<%= type %>">

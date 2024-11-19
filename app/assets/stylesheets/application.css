@@ -111,3 +111,30 @@ body {
   70% { opacity: 1; }
   100% { opacity: 0; }
 }
+
+.cache-indicator {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+}
+
+.cache-indicator.cached {
+  background-color: #e9ecef;
+  color: #6c757d;
+}
+
+.cache-indicator.live {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.title-container h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
