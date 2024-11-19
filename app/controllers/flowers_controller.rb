@@ -37,7 +37,7 @@ class FlowersController < ApplicationController
   end
 
   def handle_flower_creation
-    if Flower.count >= 16
+    if Flower.count >= 12
       remove_random_flowers
     else
       create_success_response
