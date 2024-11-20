@@ -11,7 +11,7 @@
 #
 default: &default
   adapter: postgresql
-  encoding: utf8mb4
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   host: <%= ENV.fetch("DB_HOST") { "127.0.0.1" } %>
