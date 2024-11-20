@@ -53,6 +53,7 @@ production:
     database: rails800_production
   cache:
     <<: *primary_production
+    host: something_else
     database: rails800_production_cache
     migrations_paths: db/cache_migrate
   queue:
