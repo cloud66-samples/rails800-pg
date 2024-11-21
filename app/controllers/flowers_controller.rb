@@ -46,7 +46,7 @@ class FlowersController < ApplicationController
 
   def remove_random_flowers
     number_to_remove = rand(6..10)
-    flowers_to_remove = Flower.order('RAND()').limit(number_to_remove)
+    flowers_to_remove = Flower.order('RANDOM()').limit(number_to_remove)
     removed_count = flowers_to_remove.destroy_all.length
     Rails.cache.delete('flowers_list')
     flash[:notice] = "Garden got too crowded! #{removed_count} flowers were removed to make space 🌸"
